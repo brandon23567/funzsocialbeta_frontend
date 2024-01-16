@@ -1,0 +1,55 @@
+.side_navbar_main_outer_container .container{
+    position: fixed;
+    width: 250px;
+    height: 100vh;
+    padding: 10px;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    border-right: 1px solid rgb(212, 212, 212);
+    display: flex;
+    flex-direction: column;
+}
+
+.side_navbar_main_outer_container .container .logo_container{
+    margin-bottom: 2rem;
+}
+
+.side_navbar_main_outer_container .container .logo_container h2{
+    color: royalblue;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 2.3rem;
+}
+
+.side_navbar_main_outer_container .container .navbar_links_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.side_navbar_main_outer_container .container .navbar_links_container li{
+    list-style: none;
+    margin: 1.4rem 0px;
+}
+
+.side_navbar_main_outer_container .container .navbar_links_container li .navbar_link{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.side_navbar_main_outer_container .container .navbar_links_container li .navbar_link:hover{
+    color: rgb(0, 42, 255);
+    transition: all 0.3s ease;
+}
+
+.side_navbar_main_outer_container .container .navbar_links_container li .navbar_link .icon_image{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.side_navbar_main_outer_container .container .navbar_links_container li .navbar_link p{
+    font-size: 17px;
+}

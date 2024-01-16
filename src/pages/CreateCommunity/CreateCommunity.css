@@ -1,0 +1,34 @@
+.main_create_community_outer_container .container .content_container{
+    margin-left: 270px;
+    margin-right: 15px;
+}
+
+.main_create_community_outer_container .container .content_container h2{
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.main_create_community_outer_container .container .content_container .form_container .actual_form .single_input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.main_create_community_outer_container .container .content_container .form_container .actual_form .single_input input{
+    padding: 15px 2rem;
+    border: 1px solid rgb(212, 212, 212);
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.main_create_community_outer_container .container .content_container .form_container .actual_form .create_community_btn_container .create_community_btn{
+    padding: 19px 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
+    font-size: 17px;
+    border-radius: 30px;
+}
