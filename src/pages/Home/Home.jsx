@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./Home.css"
 import SideNavbar from '../../components/SideNavbar/SideNavbar'
-import SmallUserProfile from "../../images/1 (1).jpg";
-import PostImage from "../../images/1 (2).jpg";
-import PostImage1 from "../../images/1 (3).jpg";
-import PostImage2 from "../../images/1 (4).jpg";
-import PostImage3 from "../../images/1 (5).jpg";
-import PostImage4 from "../../images/1 (6).jpg";
 import { Link } from 'react-router-dom';
 import axios from "axios"
 import Cookies from "js-cookie"
@@ -21,13 +15,15 @@ const Home = () => {
 	const [currentUsersUsername, setCurrentUsersUsername] = useState("");
     const [allPostedPosts, setAllPostedPosts] = useState([])
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
     useEffect(() => {
 		getCurrentUser();
         getAllPostsPostedOnPlatform();
 	}, [])
 
     const getAllPostsPostedOnPlatform = () => {
-        const url = "http://localhost:8000/api/base/get_all_posts_uploaded/";
+        const url = `${currentBaseApiUrl}api/base/get_all_posts_uploaded/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {
@@ -46,7 +42,7 @@ const Home = () => {
     }
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {

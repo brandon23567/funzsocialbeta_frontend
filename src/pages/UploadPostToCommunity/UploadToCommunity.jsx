@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 
 const UploadToCommunity = () => {
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
     const { slug } = useParams();
 
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState();
@@ -24,7 +26,7 @@ const UploadToCommunity = () => {
 	}, [slug]) 
 
     const getCurrentCommunityDetails = () => {
-        const url = `http://localhost:8000/api/base/get_current_community_details/${slug}`
+        const url = `${currentBaseApiUrl}api/base/get_current_community_details/${slug}`
         const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {
@@ -41,7 +43,7 @@ const UploadToCommunity = () => {
     }
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {
@@ -60,7 +62,7 @@ const UploadToCommunity = () => {
 
     const uploadNewPostToCommunity = (e) => {
         e.preventDefault()
-        const url = "http://localhost:8000/api/base/post_new_image_to_community/"
+        const url = `${currentBaseApiUrl}/api/base/post_new_image_to_community/`
 
         const formData = new FormData();
         formData.append("current_community_name", currentCommunityDetails)

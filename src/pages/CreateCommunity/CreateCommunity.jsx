@@ -15,6 +15,8 @@ const CreateCommunity = () => {
     const [communityStatus, setCommunityStatus] = useState("");
     const [communityHeaderImage, setCommunityHeaderImage] = useState(null)
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
 
     const createNewCommunity = (e) => {
         e.preventDefault();
@@ -24,7 +26,7 @@ const CreateCommunity = () => {
         formData.append("description", shortDescription)
         formData.append("community_status", communityStatus)
 
-        const url = "http://localhost:8000/api/base/create_new_community/"
+        const url = `${currentBaseApiUrl}api/base/create_new_community/`
 
         const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
@@ -48,7 +50,7 @@ const CreateCommunity = () => {
 
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {

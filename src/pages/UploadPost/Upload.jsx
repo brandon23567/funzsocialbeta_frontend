@@ -10,6 +10,8 @@ const Upload = () => {
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState();
 	const [currentUsersUsername, setCurrentUsersUsername] = useState("");
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
     const [imageCaption, setImageCaption] = useState("");
     const [imageFile, setImageFile] = useState(null)
 
@@ -24,7 +26,7 @@ const Upload = () => {
         formData.append("caption", imageCaption)
         formData.append("image_file", imageFile)
 
-        const url = "http://localhost:8000/api/base/upload_new_image_post/"
+        const url = `${currentBaseApiUrl}api/base/upload_new_image_post/`
         const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {
@@ -42,7 +44,7 @@ const Upload = () => {
 
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {

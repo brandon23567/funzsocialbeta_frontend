@@ -14,13 +14,15 @@ const Communities = () => {
 	const [currentUsersUsername, setCurrentUsersUsername] = useState("");
     const [allCommunities, setAllCommunities] = useState([])
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
     useEffect(() => {
 		getCurrentUser();
         getAllCommunities();
 	}, [])
 
     const getAllCommunities = () => {
-        const url = "http://localhost:8000/api/base/get_all_communities_on_platform/"
+        const url = `${currentBaseApiUrl}api/base/get_all_communities_on_platform/`
 
         const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
@@ -39,7 +41,7 @@ const Communities = () => {
 
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {

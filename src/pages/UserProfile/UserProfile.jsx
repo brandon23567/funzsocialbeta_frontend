@@ -14,6 +14,8 @@ import ShareBtn from "../../images/icons/share.png";
 
 const UserProfile = () => {
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
     const [currentUserProfileImg, setCurrentUserProfileImg] = useState();
 	const [currentUsersUsername, setCurrentUsersUsername] = useState("");
     const [currentUsersPosts, setCurrentUsersPosts] = useState([])
@@ -25,7 +27,7 @@ const UserProfile = () => {
 
     const getCurrentUsersPosts = () => {
 
-        const url = "http://localhost:8000/api/base/get_current_users_posts/";
+        const url = `${currentBaseApiUrl}api/base/get_current_users_posts/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {
@@ -43,7 +45,7 @@ const UserProfile = () => {
     }
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {

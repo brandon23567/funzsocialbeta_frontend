@@ -21,6 +21,8 @@ const CommunityDetail = () => {
     const [currentCommunityPosts, setCurrentCommunityPosts] = useState([]);
     const [currentCommunityAdmin, setCurrentCommunityAdmin] = useState({});
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
 
     useEffect(() => {
 		getCurrentUser();
@@ -29,7 +31,7 @@ const CommunityDetail = () => {
 	}, [slug])
 
     const getCurrentCommunityAdminDetails = () => {
-        const url = `http://localhost:8000/api/base/get_admin_user_of_community/${slug}`
+        const url = `${currentBaseApiUrl}api/base/get_admin_user_of_community/${slug}`
 
         const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
@@ -48,7 +50,7 @@ const CommunityDetail = () => {
 
 
     const getAllPostsInsideCommunity = () => {
-        const url = `http://localhost:8000/api/base/community_detail_page/${slug}`
+        const url = `${currentBaseApiUrl}api/base/community_detail_page/${slug}`
         const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {
@@ -66,7 +68,7 @@ const CommunityDetail = () => {
 
 
     const getCurrentUser = () => {
-		const url = "http://localhost:8000/api/authentication/get_current_user/";
+		const url = `${currentBaseApiUrl}api/authentication/get_current_user/`;
 		const userAccessToken = Cookies.get("access_token")
 		axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
 		const config = {

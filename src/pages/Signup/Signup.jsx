@@ -11,9 +11,11 @@ const Signup = () => {
 	const [password, setPassword] = useState("")
 	const [profileImg, setProfileImg] = useState(null)
 
+    const currentBaseApiUrl = process.en.PRODUCTION_ENVIROMENT_URL
+
     const createNewUser = (e) => {
 			e.preventDefault()
-			const url = "http://localhost:8000/api/authentication/register_user/"
+			const url = `${currentBaseApiUrl}api/authentication/register_user/`
 
 			const formData = new FormData();
 			formData.append("username", username)
